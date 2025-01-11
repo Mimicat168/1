@@ -17,12 +17,17 @@
         'https://connect.facebook.net/en_US/fbevents.js');
 
         fbq('init', '1093939478949705'); // 替換為你的 Meta Pixel ID
-        fbq('track', 'CompleteRegistration'); // 追蹤註冊完成事件
 
-        // 確保像素先發送，然後 1 秒後跳轉到 LINE
-        setTimeout(function() {
-            window.location.href = "https://line.me/R/ti/p/@420cjuoy";
-        }, 1000);
+        document.addEventListener("DOMContentLoaded", function() {
+            fbq('track', 'CompleteRegistration');
+            console.log('✅ CompleteRegistration 事件已觸發'); // 確認事件已發送
+
+            // 1.5 秒後跳轉到 LINE，確保像素數據發送
+            setTimeout(function() {
+                console.log('🔗 跳轉到 LINE: https://line.me/R/ti/p/@420cjuoy');
+                window.location.href = "https://line.me/R/ti/p/@420cjuoy";
+            }, 1000);
+        });
     </script>
     <noscript>
         <img height="1" width="1" style="display:none"
@@ -33,3 +38,4 @@
 <body>
 </body>
 </html>
+
